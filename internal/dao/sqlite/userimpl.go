@@ -16,6 +16,25 @@ func (dao UserImplSqlite) Create(u *models.User) error {
 	return result.Error
 }
 
+func (dao UserImplSqlite) Update(u *models.User) error {
+	db := get()
+	result := db.Save(u)
+	return result.Error
+}
+
+func (dao UserImplSqlite) Delete(u *models.User) error {
+	db := get()
+	result := db.Delete(u)
+	return result.Error
+}
+
+func (dao UserImplSqlite) GetById(i int) (models.User, error) {
+	db := get()
+	var user models.User
+	result := db.First(&user, i)
+	return user, result.Error
+}
+
 func (dao UserImplSqlite) GetAll() ([]models.User, error) {
 	db := get()
 	var users []models.User

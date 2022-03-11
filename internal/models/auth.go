@@ -8,3 +8,13 @@ type User struct {
 	FullName string
 	Email string
 }
+
+type Group struct {
+	gorm.Model
+	Name string
+}
+
+type Role struct {
+	gorm.Model
+	Name string
+}
